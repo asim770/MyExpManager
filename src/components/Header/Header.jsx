@@ -1,16 +1,17 @@
 import React from "react";
 import { Link,NavLink } from "react-router-dom";
+import CustomizedSwitches from "../CustomizedSwitches/CustomizedSwitches";
 
 export default function Header(){
     return(
         <>
+        
         <header className="shadow sticky z-50 top-0 m-3.5 bg-[#708090]">
-            <nav className="bg-[#696969] border-gray-200 rounded-tl-full rounded-br-full px-4 lg:px-6 py-2.5 h-max shadow-xl/30">
-                <div className="flex flex-row  space-x-40 justify-center items-center rounded-tl-lg rounded-br-lg ">
+            <nav className="bg-[#696969] border-gray-200 rounded-tl-full rounded-br-full px-4 lg:px-6 py-2.5 h-max shadow-xl/30 flex flex-row md:flex md:flex-row justify-between">
                     <div className=" order-1 h-max w-max bg-darkslategrey">
-                        <h1 className="font-ab text-[32px] text-rgrey text-shadow-lg/30">MyExpManager</h1>
+                        <h1 className="font-ab md:text-[32px] text-[25px] text-rgrey text-shadow-lg/30">MyExpManager</h1>
                     </div>
-                    <div className="order-2 flex justify-center">
+                    <div className="order-2 md:flex md:justify-center hidden">
                         <ul className="flex flex-row ">
                             <li className="font-roboto text-[20px] text-asure">
                                 <NavLink to="/"
@@ -36,11 +37,10 @@ export default function Header(){
                             
                         </ul>
                     </div>
-
-                    {/* <div className="order-3">
-
-                    </div> */}
-                </div>
+                    <div className="md:hidden order-4">hello</div>
+                    <div className="hidden md:block order-3" >
+                        <CustomizedSwitches />
+                    </div>
             </nav>
         </header>
         </>

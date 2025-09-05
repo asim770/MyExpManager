@@ -4,8 +4,10 @@ import Header from "./components/Header/Header";
 export default function Layout(){
     return(
         <>
-        <Header />
-        <Outlet />
+                <Header />
+                <Outlet />
+            
+        
         </>
     );
 }
