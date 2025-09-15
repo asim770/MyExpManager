@@ -1,8 +1,19 @@
 import React from "react";
+import { useState } from "react";
 import { Link,NavLink } from "react-router-dom";
 import CustomizedSwitches from "../CustomizedSwitches/CustomizedSwitches";
+import Hamburger from 'hamburger-react'
+import { motion, AnimatePresence } from "motion/react"
+
 
 export default function Header(){
+    const [isOpen, setOpen] = useState(false)
+
+    function handleButton(e){
+        e.preventDefault();
+        setOpen(!isOpen);
+    }
+    
     return(
         <>
         
@@ -37,12 +48,33 @@ export default function Header(){
                             
                         </ul>
                     </div>
-                    <div className="md:hidden order-4">hello</div>
+                    
+                    <div className="md:hidden order-4 h-[8px]"><button onClick={handleButton}><Hamburger toggled={isOpen} toggle={setOpen}/></button></div>
                     <div className="hidden md:block order-3" >
                         <CustomizedSwitches />
                     </div>
             </nav>
         </header>
+        <AnimatePresence>
+            {isOpen && (
+                <motion.div
+                    key="mobile-menu"
+                    initial={{ x: "100%" }}   // start offscreen to the right
+                    animate={{ x: "85%" }}        // slide into view
+                    exit={{ x: "100%" }}      // slide back out to the right
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className="flex flex-col gap-3 text-amber-50" 
+                    
+                >
+                    <NavLink to="/" onClick={()=>{setOpen(!isOpen)}} >Home</NavLink>
+                    <NavLink to="/history" onClick={()=>{setOpen(!isOpen)}}>History</NavLink>
+                    <NavLink to="/balance" onClick={()=>{setOpen(!isOpen)}}>Balance</NavLink>
+                </motion.div>
+            )}
+        </AnimatePresence>
+        
+
         </>
     );
 }
+
