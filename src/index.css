@@ -13,3 +13,11 @@ body {
     --color-asure: #f0ffff;
     --color-grayt: #808080;
 }
+.particles-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.shiny-text {
+  display: inline-block;
+}
